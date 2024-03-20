@@ -1,0 +1,18 @@
+{% extends 'components/base.html' %}
+
+{% block content %}
+    <h1>Оголошення:</h1>
+    <a href="{% url 'components:new_announ' %}">Добавити нове оголошення!</a>
+    <ul>
+        {% for announcement in announcements %}
+            <h3> Товар: {{ announcement.title }}</h3> 
+            <li> Опис: {{ announcement.text }}</li>
+            <li> Ціна: {{ announcement.price }}</li>
+            <li> Контакти: {{ announcement.contact_email }}</li>
+            <a href="{% url 'components:edit_announ' announcement.id %}">Редагувати</a> 
+            <a href="{% url 'components:delete_announ' announcement.id %}">Видалити</a>
+        {% empty %}
+            <li>Тут ще не має оголошень!</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

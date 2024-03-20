@@ -1,0 +1,12 @@
+{% extends "components/base.html" %}
+
+{% block content %}
+    <p><a href="{% url 'components:announcement' %}">{{ announcement }}</a></p>
+    <p>Добавити нове Оголошення:</p>
+    <form action="{% url 'components:new_announ' %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name='submit'>Добавити Оголошення</button>
+    </form>
+    <button name="submit"><a href="{% url 'components:announcement' %}">Відмінити</a></button>
+{% endblock content %}
